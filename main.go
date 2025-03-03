@@ -6,8 +6,12 @@ import (
 )
 
 func showGoAlert(this js.Value, inputs []js.Value) interface{} {
-	alertText := inputs[0].String()
-	js.Global().Get("alert").Invoke(alertText)
+	if len(inputs) > 0 {
+		alertText := inputs[0].String()
+		js.Global().Get("alert").Invoke(alertText)
+	} else {
+		js.Global().Get("alert").Invoke("No input provided")
+	}
 	return nil
 }
 
