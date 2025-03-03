@@ -1,0 +1,22 @@
+version: "3"
+
+tasks:
+  build-wasm:
+    desc: "Build the Go code to WebAssembly"
+    env:
+      GOOS: js
+      GOARCH: wasm
+    cmds:
+      - go build -o main.wasm main.go
+      - cp $(go env GOROOT)/lib/wasm/wasm_exec.js .
+
+  clean:
+    desc: "Clean the build files"
+    cmds:
+      - rm -f main.wasm wasm_exec.js
+
+  build:
+    desc: "Build the project"
+    cmds:
+      - task: clean
+      - task: build-wasm
