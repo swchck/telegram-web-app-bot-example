@@ -7,16 +7,25 @@ tasks:
       GOOS: js
       GOARCH: wasm
     cmds:
-      - go build -o main.wasm main.go
-      - cp $(go env GOROOT)/lib/wasm/wasm_exec.js .
+      - go build -o build/app.wasm main.go
+      - cp $(go env GOROOT)/lib/wasm/wasm_exec.js assets/wasm_exec.js
+      - base64 -i build/app.wasm -o build/app.wasm.base64
+      - ./scripts/export_wasm.sh build/app.wasm.base64
+
+  build-wasm:cleanup:
+    desc: "Cleanup after build"
+    cmds:
+      - rm -rf build
 
   clean:
     desc: "Clean the build files"
     cmds:
-      - rm -f main.wasm wasm_exec.js
+      - rm -rf build
+      - rm -f assetes/wasmexprt.js assets/wasm_exec.js
 
   build:
     desc: "Build the project"
     cmds:
       - task: clean
       - task: build-wasm
+      - task: build-wasm:cleanup
