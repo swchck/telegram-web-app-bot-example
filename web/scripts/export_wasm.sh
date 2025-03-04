@@ -20,4 +20,4 @@ wasm_base64=$(cat "$1")
 js_content="const base64Wasm = \`$wasm_base64\`;\n"
 
 # Write the JavaScript content to a file
-echo -e "$js_content" >assets/wasmexprt.js
+echo -e "$js_content" >web/assets/wasmexprt.js

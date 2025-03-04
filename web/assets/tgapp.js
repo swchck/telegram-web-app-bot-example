@@ -35,6 +35,8 @@ const DemoApp = {
             DemoApp.showAlert('Settings opened!');
         });
     },
+    createInvoice() {
+    },
 
     expand() {
         Telegram.WebApp.expand();

@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+
+    <!-- Meta Tags -->
+
     <meta charset="utf-8">
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -12,7 +15,14 @@
     <meta name="robots" content="noindex,nofollow" />
     <meta http-equiv="cross-origin-opener-policy" content="same-origin" />
     <meta http-equiv="cross-origin-embedder-policy" content="require-corp" />
+    <title></title>
+
+    <!-- Styles -->
+
     <link rel="stylesheet" href="assets/styles.css">
+
+    <!-- Base Scripts -->
+
     <script src="https://telegram.org/js/telegram-web-app.js?2"></script>
     <script src="assets/wasm_exec.js"></script>
     <script src="assets/helpers.js"></script>
@@ -33,7 +43,6 @@
         setThemeClass();
 
     </script>
-    <title></title>
 </head>
 
 <body class="" style="visibility: hidden;">
@@ -84,8 +93,17 @@
                 <option value="custom" id="bbar_color_val">custom...</option>
             </select>
         </div>
+    </section>
+
+    <section>
+        <p>User Added:</p>
+
         <input type="text" id="alertTextInput" placeholder="Enter text for alert" />
         <button onclick="showAlert()">Show Alert</button>
+
+        <button onclick="DemoApp.createInvoice(this);">Create Invoice</button>
+        <span id="created_invoice" style="display:none;">(<a href="javascript:;"
+                onclick="return DemoApp.getLatestInvoice(this);">Get Latest Invoice</a>)</span>
     </section>
 
     <section></section>
